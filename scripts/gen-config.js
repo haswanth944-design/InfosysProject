@@ -13,7 +13,14 @@ writeFileSync(new URL('../src/config.js', import.meta.url),
 `// Generated from .env by scripts/gen-config.js. Public values only.
 export const SUPABASE_URL = ${JSON.stringify(env.SUPABASE_URL)};
 export const SUPABASE_PUBLISHABLE_KEY = ${JSON.stringify(env.SUPABASE_PUBLISHABLE_KEY)};
+<<<<<<< HEAD
 export const OTP_LENGTH = ${Number(env.OTP_LENGTH)||6};
+=======
+<<<<<<< HEAD
+export const OTP_LENGTH = ${Number(env.OTP_LENGTH)||6};
+=======
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 export const REQUIRE_EMAIL_OTP = ${String(env.REQUIRE_EMAIL_OTP||'true').toLowerCase()!=='false'};
 `);
 console.log('src/config.js generated from .env');

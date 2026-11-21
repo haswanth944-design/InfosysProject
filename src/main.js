@@ -1,4 +1,8 @@
 import {sb} from './supabase.js';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 import {REQUIRE_EMAIL_OTP,OTP_LENGTH} from './config.js';
 const ROLES={
 admin:{db:'admin',n:'Admin',i:'shield-check',c:'#8b5cf6',d:'System management, user administration and permissions.',nav:[['layout-dashboard','Dashboard'],['users','Users'],['key-round','Roles'],['settings','System']],tiles:[['w6','key-round','Role overview','Five roles defined','Admin, Project Manager, Developer, Tester and DevOps Engineer.'],['w6','activity','System status','No status reported','Service health will be shown from the live API.']]},
@@ -6,6 +10,18 @@ pm:{db:'project_manager',n:'Project Manager',i:'briefcase',c:'#f59e0b',d:'Projec
 dev:{db:'developer',n:'Developer',i:'code-2',c:'#3b82f6',d:'Development work and assigned project tasks.',nav:[['layout-dashboard','Dashboard'],['folder','My projects'],['list-checks','My tasks']],tiles:[['w3','folder','Assigned projects','Nothing assigned','Projects assigned by a Project Manager show up here.'],['w3','list-checks','Assigned tasks','No tasks yet','Task progress updates will be available here.']]},
 tester:{db:'tester',n:'Tester',i:'bug',c:'#10b981',d:'Application testing and bug reporting.',nav:[['layout-dashboard','Dashboard'],['flask-conical','Test cases'],['bug','Bugs']],tiles:[['w3','flask-conical','Testing assignments','No assignments','Assigned test cycles will appear here.'],['w3','activity','Testing overview','No results yet','Executed test results will be summarised here.']]},
 devops:{db:'devops',n:'DevOps Engineer',i:'server',c:'#06b6d4',d:'Build, deployment and infrastructure management.',nav:[['layout-dashboard','Dashboard'],['git-branch','Pipelines'],['rocket','Deployments'],['activity','Monitoring']],tiles:[['w3','git-branch','Build pipelines','No pipelines connected','Pipeline status arrives with the build integration.'],['w3','rocket','Deployments','No deployments','Deployment history will be listed here.']]}};
+<<<<<<< HEAD
+=======
+=======
+import {REQUIRE_EMAIL_OTP} from './config.js';
+const ROLES={
+admin:{db:'admin',n:'Admin',i:'shield-check',c:'#8b5cf6',d:'Manage users, access permissions and system configurations.',nav:[['layout-dashboard','Dashboard'],['users','Users'],['key-round','Roles'],['settings','System']],tiles:[['w6','key-round','Role overview','Five roles defined','Admin, Project Manager, Developer, Tester and DevOps Engineer.'],['w6','activity','System status','No status reported','Service health will be shown from the live API.']]},
+pm:{db:'project_manager',n:'Project Manager',i:'briefcase',c:'#f59e0b',d:'Organize projects, plan sprints and assign tasks.',nav:[['layout-dashboard','Dashboard'],['folder','Projects'],['git-branch','Sprints'],['users','Team']],tiles:[['w3','folder','Project overview','No projects yet','Create your first project to start planning sprints.'],['w3','users','Team overview','No team members','Members appear after the Admin approves their accounts.'],['w6','plus-circle','Project creation','Start a project','Project creation arrives in the next milestone step.']]},
+dev:{db:'developer',n:'Developer',i:'code-2',c:'#3b82f6',d:'Manage assigned development tasks and project contributions.',nav:[['layout-dashboard','Dashboard'],['folder','My projects'],['list-checks','My tasks']],tiles:[['w3','folder','Assigned projects','Nothing assigned','Projects assigned by a Project Manager show up here.'],['w3','list-checks','Assigned tasks','No tasks yet','Task progress updates will be available here.']]},
+tester:{db:'tester',n:'Tester',i:'bug',c:'#10b981',d:'Execute tests, validate software quality and report bugs.',nav:[['layout-dashboard','Dashboard'],['flask-conical','Test cases'],['bug','Bugs']],tiles:[['w3','flask-conical','Testing assignments','No assignments','Assigned test cycles will appear here.'],['w3','activity','Testing overview','No results yet','Executed test results will be summarised here.']]},
+devops:{db:'devops',n:'DevOps Engineer',i:'server',c:'#06b6d4',d:'Manage automated builds, deployments and application monitoring.',nav:[['layout-dashboard','Dashboard'],['git-branch','Pipelines'],['rocket','Deployments'],['activity','Monitoring']],tiles:[['w3','git-branch','Build pipelines','No pipelines connected','Pipeline status arrives with the build integration.'],['w3','rocket','Deployments','No deployments','Deployment history will be listed here.']]}};
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 const K=Object.keys(ROLES);
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=$('#root');let cur={role:'admin'};
@@ -15,11 +31,25 @@ function toast(msg,t='in'){const e=document.createElement('div');e.className='to
 function theme(){const d=document.documentElement;d.dataset.theme=d.dataset.theme=='light'?'dark':'light'}
 if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.dataset.theme='light';
 function topbar(){return `<header class="top glass"><a href="#landing" class="logo">${'<span class="m">'+I('network')+'</span>'}NeuroForge Nexus</a><nav><a class="nb" href="#landing">Home</a><button class="nb" data-dlg="about">About</button><button class="nb" data-dlg="help">Help</button></nav><button class="ib" data-act="cmd" aria-label="Open command menu">${I('search')}</button><button class="ib" data-act="theme" aria-label="Toggle theme">${I('sun-moon')}</button><button class="pri" data-act="signin">Sign in</button></header>`}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 function landing(){return topbar()+`<section class="hero"><h1>One Platform. Five Roles. One Connected Workflow.</h1><p>Enterprise Software Lifecycle and DevOps Management System: plan, build, test, release and monitor software in one place.</p></section><section class="grid" id="roles">${K.map(k=>{const r=ROLES[k];return `<button class="rc glass" style="--c:${r.c}" data-role="${k}"><span class="ri">${I(r.i)}</span><h3>${r.n}</h3><p>${r.d}</p><span class="go">Continue ${I('arrow-right')}</span></button>`}).join('')}</section>`}
 function login(k){const r=ROLES[k];cur.role=k;return `<div class="center" style="--rc:${r.c}"><div class="card glass"><a class="lnk" href="#landing" style="display:inline-flex;gap:6px;align-items:center;font-size:13px">${I('arrow-left')} Back to roles</a><div style="margin-top:18px"><span class="badge">${I(r.i)} ${r.n}</span></div><h2>Welcome back</h2><p class="sub">Sign in to your ${r.n} workspace.</p><form id="lf" novalidate><div id="g1"><label for="em">Email</label><input id="em" type="email" autocomplete="email" placeholder="you@company.com"><div class="err" id="e1"></div></div><div id="g2"><label for="pw">Password</label><div class="fld"><input id="pw" type="password" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="ib" data-act="eye" aria-label="Show password">${I('eye')}</button></div><div class="err" id="e2"></div></div><div class="row"><label><input type="checkbox"> Remember me</label><button type="button" class="lnk" data-dlg="forgot">Forgot password?</button></div><button class="pri full" id="sb">Sign In</button></form>${k=='admin'?'<p class="foot">Admin accounts are provisioned by an authorized administrator.</p>':'<p class="foot">New here? <button class="lnk" data-dlg="reg">Request access</button></p>'}</div></div>`}
 let tmr,cd;
 function otp(){const r=ROLES[cur.role];return `<div class="center" style="--rc:${r.c}"><div class="card glass" style="text-align:center"><div class="shield">${I('shield-check')}</div><h2 style="margin-top:0">Verify your email</h2><p class="sub" style="margin-bottom:0">Enter the ${OTP_LENGTH}-digit code sent to <b id="oe"></b>. It expires in <b id="ct">5:00</b>.</p><div class="otp" id="ob">${Array.from({length:OTP_LENGTH},(_,i)=>i).map(i=>`<input inputmode="numeric" maxlength="1" placeholder=" " aria-label="Digit ${i+1}" autocomplete="one-time-code">`).join('')}</div><div class="err" id="oer" style="margin:-10px 0 12px"></div><button class="pri full" id="ov" disabled>Verify Code ${I('arrow-right')}</button><p class="foot"><button class="lnk" id="rs" disabled>Resend code in 60s</button> · <a class="lnk" href="#login-${cur.role}">Change email</a></p></div></div>`}
 function dash(k){const r=ROLES[k];cur.role=k;const d=new Date().toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});return `<div class="app" style="--rc:${r.c}"><aside class="glass" id="sd"><div class="logo"><span class="m">${I('network')}</span>NeuroForge</div>${r.nav.map((n,i)=>`<button class="ni ${i?'':'on'}" data-nav="${n[1]}">${I(n[0])}${n[1]}</button>`).join('')}<button class="me" data-act="out"><span class="av">${esc((cur.me.full_name||r.n)[0])}</span><span style="flex:1"><b style="display:block;font-size:13px">${esc(cur.me.full_name||cur.me.email)}</b><span style="font-size:12px;color:var(--mut)">Sign out</span></span>${I('log-out')}</button></aside><main><div class="bar glass"><button class="ib menu" data-act="menu" aria-label="Menu">${I('menu')}</button><h2>${r.n} Dashboard</h2><button class="pill d" data-act="cmd">${I('search')} Search <span class="kbd">Ctrl K</span></button><span class="pill d">${d}</span><button class="ib" data-act="theme" aria-label="Toggle theme">${I('sun-moon')}</button><button class="ib" data-act="bell" aria-label="Notifications">${I('bell')}</button></div><div class="tiles"><section class="tile glass w6" id="pt"><h4>${I('folder')}Projects<span style="margin-left:auto">${CAN()?'<button class="pri" id="np">'+'New project</button>':''}</span></h4><div id="pl" class="empty">Loading…</div></section>${k=='admin'?'<section class="tile glass w6"><h4>'+I('users')+'User management</h4><div id="ul" class="empty">Loading…</div></section>':''}${r.tiles.filter(t=>t[1]!=='folder'&&t[1]!=='plus-circle').map(t=>`<section class="tile glass ${t[0]}"><h4>${I(t[1])}${t[2]}</h4><div class="empty">${I(t[1])}<b>${t[3]}</b><span>${t[4]}</span></div></section>`).join('')}</div></main></div>`}
+<<<<<<< HEAD
+=======
+=======
+function landing(){return topbar()+`<section class="hero"><h1>Engineering the Future of Software Development</h1><p>One intelligent platform. Five specialized roles. One connected software lifecycle.</p></section><section class="grid" id="roles">${K.map(k=>{const r=ROLES[k];return `<button class="rc glass" style="--c:${r.c}" data-role="${k}"><span class="ri">${I(r.i)}</span><h3>${r.n}</h3><p>${r.d}</p><span class="go">Continue ${I('arrow-right')}</span></button>`}).join('')}</section>`}
+function login(k){const r=ROLES[k];cur.role=k;return `<div class="center" style="--rc:${r.c}"><div class="card glass"><a class="lnk" href="#landing" style="display:inline-flex;gap:6px;align-items:center;font-size:13px">${I('arrow-left')} Back to roles</a><div style="margin-top:18px"><span class="badge">${I(r.i)} ${r.n}</span></div><h2>Welcome back</h2><p class="sub">Sign in to your ${r.n} workspace.</p><form id="lf" novalidate><div id="g1"><label for="em">Email</label><input id="em" type="email" autocomplete="email" placeholder="you@company.com"><div class="err" id="e1"></div></div><div id="g2"><label for="pw">Password</label><div class="fld"><input id="pw" type="password" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="ib" data-act="eye" aria-label="Show password">${I('eye')}</button></div><div class="err" id="e2"></div></div><div class="row"><label><input type="checkbox"> Remember me</label><button type="button" class="lnk" data-dlg="forgot">Forgot password?</button></div><button class="pri full" id="sb">Sign In</button></form>${k=='admin'?'<p class="foot">Admin accounts are provisioned by an authorized administrator.</p>':'<p class="foot">New here? <button class="lnk" data-dlg="reg">Request access</button></p>'}</div></div>`}
+let tmr,cd;
+function otp(){const r=ROLES[cur.role];return `<div class="center" style="--rc:${r.c}"><div class="card glass" style="text-align:center"><div class="shield">${I('shield-check')}</div><h2 style="margin-top:0">Verify your email</h2><p class="sub" style="margin-bottom:0">Enter the code sent to <b id="oe"></b>. It expires in <b id="ct">5:00</b>.</p><div class="otp" id="ob">${[0,1,2,3,4,5,6,7].map(i=>`<input inputmode="numeric" maxlength="1" placeholder=" " aria-label="Digit ${i+1}" autocomplete="one-time-code">`).join('')}</div><div class="err" id="oer" style="margin:-10px 0 12px"></div><button class="pri full" id="ov">Verify Code ${I('arrow-right')}</button><p class="foot"><button class="lnk" id="rs" disabled>Resend code in 60s</button> · <a class="lnk" href="#login-${cur.role}">Change email</a></p></div></div>`}
+function dash(k){const r=ROLES[k];cur.role=k;const d=new Date().toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});return `<div class="app" style="--rc:${r.c}"><aside class="glass" id="sd"><div class="logo"><span class="m">${I('network')}</span>NeuroForge</div>${r.nav.map((n,i)=>`<button class="ni ${i?'':'on'}" data-nav="${n[1]}">${I(n[0])}${n[1]}</button>`).join('')}<button class="me" data-act="out"><span class="av">${esc((cur.me.full_name||r.n)[0])}</span><span style="flex:1"><b style="display:block;font-size:13px">${esc(cur.me.full_name||cur.me.email)}</b><span style="font-size:12px;color:var(--mut)">Sign out</span></span>${I('log-out')}</button></aside><main><div class="bar glass"><button class="ib menu" data-act="menu" aria-label="Menu">${I('menu')}</button><h2>${r.n} Dashboard</h2><button class="pill d" data-act="cmd">${I('search')} Search <span class="kbd">Ctrl K</span></button><span class="pill d">${d}</span><button class="ib" data-act="theme" aria-label="Toggle theme">${I('sun-moon')}</button><button class="ib" data-act="bell" aria-label="Notifications">${I('bell')}</button></div><div class="tiles">${k=='admin'?'<section class="tile glass w6"><h4>'+I('users')+'User management</h4><div id="ul" class="empty">Loading…</div></section>':''}${r.tiles.map(t=>`<section class="tile glass ${t[0]}"><h4>${I(t[1])}${t[2]}</h4><div class="empty">${I(t[1])}<b>${t[3]}</b><span>${t[4]}</span></div></section>`).join('')}</div></main></div>`}
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 async function route(){const h=location.hash.slice(1)||'landing';let html;if(h.startsWith('dash-')&&ROLES[h.slice(5)]){const me=await guard(h.slice(5));if(!me){location.hash='landing';return}cur.me=me}
  if(h.startsWith('login-')&&ROLES[h.slice(6)])html=login(h.slice(6));
  else if(h=='otp')html=otp();
@@ -27,7 +57,15 @@ async function route(){const h=location.hash.slice(1)||'landing';let html;if(h.s
  else html=landing();
  clearInterval(tmr);root.innerHTML='<div class="view on">'+html+'</div>';ico();bind(h);scrollTo(0,0)}
 function bind(h){
+<<<<<<< HEAD
  if(h=='otp')initOtp();if(h=='dash-admin')loadUsers();if(h.startsWith('dash-'))loadProjects();
+=======
+<<<<<<< HEAD
+ if(h=='otp')initOtp();if(h=='dash-admin')loadUsers();if(h.startsWith('dash-'))loadProjects();
+=======
+ if(h=='otp')initOtp();if(h=='dash-admin')loadUsers();
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
  $$('.rc').forEach(c=>c.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-b.left+'px');c.style.setProperty('--my',e.clientY-b.top+'px')}));
  const lf=$('#lf');if(lf)lf.addEventListener('submit',submitLogin);
  if(lf)$('#em').addEventListener('input',()=>clr('g1','e1'));if(lf)$('#pw').addEventListener('input',()=>clr('g2','e2'));
@@ -42,18 +80,42 @@ function submitLogin(e){e.preventDefault();const em=$('#em').value.trim(),pw=$('
 function initOtp(){$('#oe').textContent=cur.email||'your email';const ins=$$('#ob input');ins[0].focus();
  ins.forEach((x,i)=>{x.addEventListener('input',()=>{x.value=x.value.replace(/\D/g,'');if(x.value&&ins[i+1])ins[i+1].focus()});
   x.addEventListener('keydown',e=>{if(e.key=='Backspace'&&!x.value&&ins[i-1]){ins[i-1].focus();ins[i-1].value=''}if(e.key=='ArrowLeft'&&ins[i-1])ins[i-1].focus();if(e.key=='ArrowRight'&&ins[i+1])ins[i+1].focus();if(e.key=='Enter')$('#ov').click()});
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
   x.addEventListener('paste',e=>{e.preventDefault();const t=(e.clipboardData.getData('text')||'').replace(/[\s-]/g,'');if(!isOtp(t)){$('#oer').textContent='The code must be exactly '+OTP_LENGTH+' digits.';return}[...t].forEach((c,j)=>ins[j].value=c);ins[ins.length-1].focus();upd()})});
  const upd=()=>{$('#ov').disabled=!isOtp(ins.map(i=>i.value).join(''))};ins.forEach(x=>{x.addEventListener('input',()=>{$('#oer').textContent='';upd()});x.addEventListener('keyup',upd)});upd();
  let left=300,cool=60;const ct=$('#ct'),rs=$('#rs');
  tmr=setInterval(()=>{left=Math.max(0,left-1);ct.textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');if(cool>0){cool--;rs.textContent=cool?`Resend code in ${cool}s`:'Resend code';rs.disabled=cool>0}},1000);
  rs.onclick=async()=>{cool=60;rs.disabled=true;left=300;const r=cur.mode=='signup'?await sb.auth.resend({type:'signup',email:cur.email}):await sb.auth.signInWithOtp({email:cur.email,options:{shouldCreateUser:false}});toast(r.error?r.error.message:'A new code was sent.',r.error?'er':'ok')};
  $('#ov').onclick=()=>{const v=ins.map(i=>i.value).join('');if(!isOtp(v)){$('#oer').textContent='Enter all '+OTP_LENGTH+' digits.';$('#ob').classList.remove('bad');void $('#ob').offsetWidth;$('#ob').classList.add('bad');return}
+<<<<<<< HEAD
+=======
+=======
+  x.addEventListener('paste',e=>{e.preventDefault();const t=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,8);[...t].forEach((c,j)=>{if(ins[j])ins[j].value=c});(ins[Math.min(t.length,ins.length-1)]).focus()})});
+ let left=300,cool=60;const ct=$('#ct'),rs=$('#rs');
+ tmr=setInterval(()=>{left=Math.max(0,left-1);ct.textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');if(cool>0){cool--;rs.textContent=cool?`Resend code in ${cool}s`:'Resend code';rs.disabled=cool>0}},1000);
+ rs.onclick=async()=>{cool=60;rs.disabled=true;left=300;const r=cur.mode=='signup'?await sb.auth.resend({type:'signup',email:cur.email}):await sb.auth.signInWithOtp({email:cur.email,options:{shouldCreateUser:false}});toast(r.error?r.error.message:'A new code was sent.',r.error?'er':'ok')};
+ $('#ov').onclick=()=>{const v=ins.map(i=>i.value).join('');if(v.length<ins.length){$('#oer').textContent=`Enter all ${ins.length} digits.`;$('#ob').classList.remove('bad');void $('#ob').offsetWidth;$('#ob').classList.add('bad');return}
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
   verifyCode(v)}}
 /* dialogs */
 function modal(html){const o=document.createElement('div');o.className='ov';o.innerHTML='<div class="dlg" role="dialog" aria-modal="true">'+html+'</div>';const prev=document.activeElement;const close=()=>{o.remove();prev&&prev.focus&&prev.focus()};o.addEventListener('mousedown',e=>{if(e.target==o)close()});o.addEventListener('keydown',e=>{if(e.key=='Escape')close()});document.body.appendChild(o);ico();$$('[data-close]',o).forEach(b=>b.onclick=close);const f=$('input,button',o);f&&f.focus();return{o,close}}
 const DL={about:()=>modal(`<h3>About NeuroForge Nexus</h3><p class="sub" style="color:var(--mut);margin:8px 0 18px">An enterprise software lifecycle and DevOps management system with five specialized roles.</p><button class="pri" data-close>Close</button>`),
+<<<<<<< HEAD
 help:()=>modal(`<h3>Help</h3><p style="color:var(--mut);margin:8px 0 18px">Pick your role, sign in, then verify the ${OTP_LENGTH}-digit code sent to your email. Press Ctrl+K (or Cmd+K) anywhere to open the command menu.</p><button class="pri" data-close>Got it</button>`),
 forgot:()=>{const m=modal(`<h3>Reset your password</h3><p style="color:var(--mut);margin:6px 0 4px" id="fp">We will email a ${OTP_LENGTH}-digit recovery code.</p><div id="s1"><label for="fe">Email</label><input id="fe" type="email" placeholder="you@company.com"></div><div id="s2" style="display:none"><label for="fc">Code</label><input id="fc" type="text" inputmode="numeric" maxlength="6"><label for="fn">New password</label><input id="fn" type="password" placeholder="At least 8 characters"></div><div class="err" id="fer"></div><div style="display:flex;gap:10px;margin-top:18px"><button class="pri" id="fs">Send code</button><button class="sec" data-close>Cancel</button></div>`);
+=======
+<<<<<<< HEAD
+help:()=>modal(`<h3>Help</h3><p style="color:var(--mut);margin:8px 0 18px">Pick your role, sign in, then verify the ${OTP_LENGTH}-digit code sent to your email. Press Ctrl+K (or Cmd+K) anywhere to open the command menu.</p><button class="pri" data-close>Got it</button>`),
+forgot:()=>{const m=modal(`<h3>Reset your password</h3><p style="color:var(--mut);margin:6px 0 4px" id="fp">We will email a ${OTP_LENGTH}-digit recovery code.</p><div id="s1"><label for="fe">Email</label><input id="fe" type="email" placeholder="you@company.com"></div><div id="s2" style="display:none"><label for="fc">Code</label><input id="fc" type="text" inputmode="numeric" maxlength="6"><label for="fn">New password</label><input id="fn" type="password" placeholder="At least 8 characters"></div><div class="err" id="fer"></div><div style="display:flex;gap:10px;margin-top:18px"><button class="pri" id="fs">Send code</button><button class="sec" data-close>Cancel</button></div>`);
+=======
+help:()=>modal(`<h3>Help</h3><p style="color:var(--mut);margin:8px 0 18px">Pick your role, sign in, then verify the 6-digit code sent to your email. Press Ctrl+K (or Cmd+K) anywhere to open the command menu.</p><button class="pri" data-close>Got it</button>`),
+forgot:()=>{const m=modal(`<h3>Reset your password</h3><p style="color:var(--mut);margin:6px 0 4px" id="fp">We will email a 6-digit recovery code.</p><div id="s1"><label for="fe">Email</label><input id="fe" type="email" placeholder="you@company.com"></div><div id="s2" style="display:none"><label for="fc">Code</label><input id="fc" type="text" inputmode="numeric" maxlength="6"><label for="fn">New password</label><input id="fn" type="password" placeholder="At least 8 characters"></div><div class="err" id="fer"></div><div style="display:flex;gap:10px;margin-top:18px"><button class="pri" id="fs">Send code</button><button class="sec" data-close>Cancel</button></div>`);
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
  const g=i=>$('#'+i,m.o);let step=1,em='';
  g('fs').onclick=async()=>{const e=g('fer');e.textContent='';g('fs').disabled=true;
   if(step==1){em=g('fe').value.trim();if(!mailRe.test(em)){e.textContent='Enter a valid email address.';g('fs').disabled=false;return}
@@ -79,7 +141,15 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLower
 document.addEventListener('click',e=>{const t=e.target.closest('[data-role],[data-act],[data-dlg],[data-nav]');if(!t)return;
  if(t.dataset.role){const k=t.dataset.role;$$('.rc').forEach(c=>c.classList.add(c==t?'sel':'dim'));setTimeout(()=>location.hash='login-'+k,380)}
  else if(t.dataset.dlg)DL[t.dataset.dlg]();
+<<<<<<< HEAD
  else if(t.dataset.nav){if(t.dataset.nav=='Dashboard'){$$('.ni').forEach(n=>n.classList.toggle('on',n==t))}else if(/project/i.test(t.dataset.nav))$('#pt').scrollIntoView({behavior:'smooth'});else toast(t.dataset.nav+' arrives in a later milestone step.','in')}
+=======
+<<<<<<< HEAD
+ else if(t.dataset.nav){if(t.dataset.nav=='Dashboard'){$$('.ni').forEach(n=>n.classList.toggle('on',n==t))}else if(/project/i.test(t.dataset.nav))$('#pt').scrollIntoView({behavior:'smooth'});else toast(t.dataset.nav+' arrives in a later milestone step.','in')}
+=======
+ else if(t.dataset.nav){if(t.dataset.nav=='Dashboard'){$$('.ni').forEach(n=>n.classList.toggle('on',n==t))}else toast(t.dataset.nav+' arrives in a later milestone step.','in')}
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
  else{const a=t.dataset.act;if(a=='theme')theme();else if(a=='cmd')cmd();else if(a=='signin'){document.getElementById('roles').scrollIntoView({behavior:'smooth'})}
  else if(a=='eye'){const p=$('#pw'),s=p.type=='password';p.type=s?'text':'password';t.innerHTML=I(s?'eye-off':'eye');ico()}
  else if(a=='out'){sb.auth.signOut().then(()=>{toast('Signed out.','ok');location.hash='landing'})}
@@ -94,7 +164,14 @@ window.addEventListener('hashchange',route);
   for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);if(d<140){x.strokeStyle=(l?'rgba(80,90,200,':'rgba(140,150,255,')+(.2*(1-d/140))+')';x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke()}}
   if(!rm)requestAnimationFrame(f)}
  addEventListener('resize',()=>{rs();rm&&f()});rs();f()})();
+<<<<<<< HEAD
 const isOtp=v=>new RegExp('^[0-9]{'+OTP_LENGTH+'}$').test(v);
+=======
+<<<<<<< HEAD
+const isOtp=v=>new RegExp('^[0-9]{'+OTP_LENGTH+'}$').test(v);
+=======
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 async function doLogin(em,pw){const b=$('#sb');b.disabled=true;b.innerHTML='<span class="spin"></span> Signing in…';
  try{const {data,error}=await sb.auth.signInWithPassword({email:em,password:pw});if(error)throw error;
@@ -104,9 +181,21 @@ async function doLogin(em,pw){const b=$('#sb');b.disabled=true;b.innerHTML='<spa
   if(deny)throw new Error(deny);
   if(!REQUIRE_EMAIL_OTP){toast('Signed in.','ok');location.hash='dash-'+cur.role;return}
   const {error:oe}=await sb.auth.signInWithOtp({email:em,options:{shouldCreateUser:false}});if(oe)throw oe;
+<<<<<<< HEAD
   cur.email=em;cur.mode='email';toast('We emailed you a code.','ok');location.hash='otp'}
  catch(e){toast(e.message||'Sign in failed.','er');b.disabled=false;b.textContent='Sign In'}}
 async function verifyCode(v){if(!isOtp(v)){$('#oer').textContent='The code must be exactly '+OTP_LENGTH+' digits.';return}const b=$('#ov');b.disabled=true;
+=======
+<<<<<<< HEAD
+  cur.email=em;cur.mode='email';toast('We emailed you a code.','ok');location.hash='otp'}
+ catch(e){toast(e.message||'Sign in failed.','er');b.disabled=false;b.textContent='Sign In'}}
+async function verifyCode(v){if(!isOtp(v)){$('#oer').textContent='The code must be exactly '+OTP_LENGTH+' digits.';return}const b=$('#ov');b.disabled=true;
+=======
+  cur.email=em;cur.mode='email';toast('We emailed you a 6-digit code.','ok');location.hash='otp'}
+ catch(e){toast(e.message||'Sign in failed.','er');b.disabled=false;b.textContent='Sign In'}}
+async function verifyCode(v){const b=$('#ov');b.disabled=true;
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
  const {data,error}=await sb.auth.verifyOtp({email:cur.email,token:v,type:cur.mode=='signup'?'signup':'email'});b.disabled=false;
  if(error){$('#oer').textContent='That code is invalid or has expired.';const o=$('#ob');o.classList.remove('bad');void o.offsetWidth;o.classList.add('bad');return}
  const {data:p}=await sb.from('profiles').select('role,account_status').eq('id',data.user.id).single();
@@ -124,6 +213,10 @@ async function loadUsers(){const el=$('#ul');if(!el)return;
   const {error}=await sb.rpc('admin_set_role',{target:u.id,new_role:u.role||u.requested_role,new_status:b.dataset.st});
   if(error){toast(error.message,'er');b.disabled=false;return}toast('User updated.','ok');loadUsers()}}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 const CAN=()=>cur.me&&['admin','project_manager'].includes(cur.me.role);
 const ST={planning:'Planning',active:'Active',on_hold:'On hold',completed:'Completed'};
 const FS='width:100%;padding:12px 14px;border-radius:12px;background:var(--inp);border:1px solid var(--bd);color:var(--tx);font:inherit';
@@ -150,4 +243,9 @@ async function openProject(p){const mg=p.owner_id==cur.me.id||cur.me.role=='admi
   g('pg').onclick=()=>{m.close();projectForm(p)};
   let armed=false;g('pd').onclick=async()=>{if(!armed){armed=true;g('pd').textContent='Click again to confirm delete';return}const {data:d,error}=await sb.from('projects').delete().eq('id',p.id).select();if(error||!d.length){g('pe').textContent=error?error.message:'You are not allowed to delete this project.';return}m.close();toast('Project deleted.','ok');loadProjects()}}}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
 route();

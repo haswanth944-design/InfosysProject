@@ -20,6 +20,15 @@ Needs internet (Supabase library and icons load from a CDN). SMTP for the emaile
 - Sign up creates a pending profile; a requested role is only a request. Admins approve users on the Admin dashboard.
 - Sign in checks password, verifies the account is active and matches the chosen role, then emails a 6-digit code.
 - Roles live in `public.profiles`; row-level security blocks users from changing their own role. Dashboard routes are also checked in the browser, but the database is the real enforcement.
+<<<<<<< HEAD
 
 ## OTP length
 `OTP_LENGTH` in `.env` must equal Supabase > Authentication > Sign In / Providers > Email > Email OTP Length (currently 8). Change both together, then run `npm start`.
+=======
+<<<<<<< HEAD
+
+## OTP length
+`OTP_LENGTH` in `.env` must equal Supabase > Authentication > Sign In / Providers > Email > Email OTP Length (currently 8). Change both together, then run `npm start`.
+=======
+>>>>>>> e5f630d2035201061e916a7a764df8b64b42c585
+>>>>>>> c8276e91b78f2d8f490586d33638fd9522689caf
